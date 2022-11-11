@@ -95,17 +95,17 @@ st.sidebar.markdown(html_temp,unsafe_allow_html=True)
 
 
 def user_input_data():
-    Amount = st.slider(label="Amount", min_value=0.00, max_value=23691.1,value=0.0, step=0.01) 
-    V4 = st.slider(label="V4", min_value=-5.00, max_value=16.0,value=3.99790559,step=0.01)
-    V5 = st.slider(label="V5", min_value=-113.00, max_value=34.0,value=-0.52218786, step=0.01)
-    V7 = st.slider(label="V7", min_value=-43.00, max_value=120.0,value=-2.53738731, step=0.01)
-    V8 = st.slider(label="V8", min_value=-73.00, max_value=20.0,value=1.391657251, step=0.01)
-    V12 = st.slider(label="V12", min_value=-18.00, max_value=7.8,value=-2.89990739, step=0.01)
-    V13 = st.slider(label="V13", min_value=-18.00, max_value=7.8,value=-0.59522188, step=0.01)
-    V14 = st.slider(label="V14", min_value=-19.00, max_value=10.0,value=-4.28925378, step=0.01)
-    V17 = st.slider(label="V17", min_value=-25.00, max_value=9.0,value=-2.83005567, step=0.01)
-    V20 = st.slider(label="V20", min_value=-54.00, max_value=39.0,value=.12691056, step=0.01)
-    V23 = st.slider(label="V23", min_value=-44.00, max_value=22.0,value=-0.46521108, step=0.01)    
+    Amount = st.slider(label="Amount", min_value=min(df['Amount']), max_value=max(df['Amount']), value=0.0, step=0.01) 
+    V4 = st.slider(label="V4", min_value=min(df['V4']), max_value=max(df['V4']), value=3.99790559,step=0.01)
+    V5 = st.slider(label="V5", min_value=min(df['V5']), max_value=max(df['V5']), value=-0.52218786, step=0.01)
+    V7 = st.slider(label="V7", min_value=min(df['V7']), max_value=max(df['V7']), value=-2.53738731, step=0.01)
+    V8 = st.slider(label="V8", min_value=min(df['V8']), max_value=max(df['V8']), value=1.391657251, step=0.01)
+    V12 = st.slider(label="V12", min_value=min(df['V12']), max_value=max(df['V12']), value=-2.89990739, step=0.01)
+    V13 = st.slider(label="V13", min_value=min(df['V13']), max_value=max(df['V13']), value=-0.59522188, step=0.01)
+    V14 = st.slider(label="V14", min_value=min(df['V14']), max_value=max(df['V14']), value=-4.28925378, step=0.01)
+    V17 = st.slider(label="V17", min_value=min(df['V17']), max_value=max(df['V17']), value=-2.83005567, step=0.01)
+    V20 = st.slider(label="V20", min_value=min(df['V20']), max_value=max(df['V20']), value=.12691056, step=0.01)
+    V23 = st.slider(label="V23", min_value=min(df['V23']), max_value=max(df['V23']), value=-0.46521108, step=0.01)    
     
     data = { 
         'Amount': Amount,
@@ -159,9 +159,9 @@ if st.button('Make Prediction'):
     prediction = model.predict(df)
     
     if int(prediction[0])==0:    
-        st.subheader(prediction[0])
-        st.subheader(f"Transaction is SAFE  :)")
+        st.success(prediction[0])
+        st.success(f"Transaction is SAFE  :)")
         
     else:
-        st.subheader(prediction[0])        
-        st.success(f'ALARM! Transaction is FRAUDULENT  :(')
+        st.warning(prediction[0])        
+        st.warning(f'ALARM! Transaction is FRAUDULENT  :(')
