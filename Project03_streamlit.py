@@ -39,6 +39,7 @@ def set_bg_hack_url():
          }}
          </style>
          """, unsafe_allow_html=True)
+set_bg_hack_url()
 
 vtxt= "💰Credit Card Fraud Detection App💰"
 htmlstr1 = f"""<p style="background-color: transparent;
