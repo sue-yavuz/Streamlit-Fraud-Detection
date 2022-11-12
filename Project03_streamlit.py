@@ -82,7 +82,7 @@ st.sidebar.header(
 st.sidebar.header("A credit card account that doesn't require possession of a physical card. Commonly a method used to make online purchases, it requires only that the thief knows your name, account number and the card's security code.")
 st.sidebar.subheader("Predict the fraud according features.")
 html_temp = """
-<div style="background-color:tomato;padding:1.5px">
+<div style="background-color:transparent;padding:1.5px"> #tomato
 <h1 style="color:white;text-align:center;">   </h1>
 </div><br>"""
 st.sidebar.markdown(html_temp,unsafe_allow_html=True)
